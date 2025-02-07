@@ -1,0 +1,197 @@
+mutation CreateUser($createUserInput: CreateUserInput!) {
+  createUser(createUserInput: $createUserInput) {
+    id
+    name
+    email
+    role
+  }
+}
+
+{
+  "createUserInput": {
+    "name": "Sujeet",
+    "email": "sujeet@gmail.com",
+    "password": "123456",
+    "role": "ADMIN"
+  }
+}
+
+
+=================================================
+mutation Login($username: String!, $password: String!) {
+  login(username: $username, password: $password)
+}
+
+{
+  "username": "sujeet@gmail.com",
+  "password": "123456"
+}
+
+=======================================================
+mutation CreateDoctor($createDoctorInput: CreateDoctorInput!) {
+  createDoctor(createDoctorInput: $createDoctorInput) {
+    id
+    specialization
+  }
+}
+
+{
+  "createDoctorInput": {
+    "specialization": "Cardiology",
+    "name": "Dr. John Doe",
+    "email": "sujeet+doctor@example.com",
+    "password": "123456"
+  }
+}
+
+{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczODkwNjI3OSwiZXhwIjoxNzM4OTkyNjc5fQ.Q_l9CvBwDznMGEbY-PoCLAxiGPDhtK-3tjm6DcWqpQQ"
+}
+
+=======================================================================
+mutation CreatePatient($name: String!, $contactInfo: String!, $email: String!, $password: String!) {
+  createPatient(name: $name, contactInfo: $contactInfo, email: $email, password: $password) {
+    id
+    contactInfo
+  }
+}
+
+{
+  "name": "Test Doe",
+  "contactInfo": "+123456789",
+  "email": "sujeet+patient@gmail.com",
+  "password": "123456"
+}
+
+{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczODkwNjI3OSwiZXhwIjoxNzM4OTkyNjc5fQ.Q_l9CvBwDznMGEbY-PoCLAxiGPDhtK-3tjm6DcWqpQQ"
+}
+=========================================================================
+query {
+  patient {
+    id
+    contactInfo
+    user {
+      id
+      name
+    }
+  }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldCtwYXRpZW50QGdtYWlsLmNvbSIsInVzZXJJZCI6Mywicm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3Mzg5MjA5NTMsImV4cCI6MTczOTAwNzM1M30.xGX9BrPbaDWXT8rETFBs_dPqlLTy0rX2SbC7go7T0Gw"
+}
+===========================================================================
+query {
+  patients {
+    id
+    contactInfo
+    user {
+      id
+      name
+    }
+  }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczODkyMjAxNiwiZXhwIjoxNzM5MDA4NDE2fQ.X21-dJRjxTVTzG8nqjEp8FUrNzU1WrqxxIlOoVqj78Q"
+}
+
+========================================================================
+query {
+  doctors(skip: 0, take: 10) {
+    id
+    specialization
+    user {
+      id
+      name
+    }
+  }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczODkyMjAxNiwiZXhwIjoxNzM5MDA4NDE2fQ.X21-dJRjxTVTzG8nqjEp8FUrNzU1WrqxxIlOoVqj78Q"
+}
+
+================================
+query {
+  doctor {
+    id
+    specialization
+    user {
+      id
+      name
+    }
+  }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldCtkb2N0b3JAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjIsInJvbGUiOiJET0NUT1IiLCJpYXQiOjE3Mzg5MjI4MDEsImV4cCI6MTczOTAwOTIwMX0.cRtTUHCKUdbMryLRpmrZXqLQqmmutaPQZdnIPEDUmEg"
+}
+
+========================
+mutation UpdateDoctor($input: UpdateDoctorInput!) {
+  updateDoctor(updateDoctorInput: $input) {
+    id
+    specialization
+    user {
+      id
+      name
+    }
+  }
+}
+
+{ 
+  "input" :{
+	    "specialization":"test"
+    }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldCtkb2N0b3JAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjIsInJvbGUiOiJET0NUT1IiLCJpYXQiOjE3Mzg5MjI4MDEsImV4cCI6MTczOTAwOTIwMX0.cRtTUHCKUdbMryLRpmrZXqLQqmmutaPQZdnIPEDUmEg"
+}
+
+=====================================
+mutation CreateAppointment(
+  $doctorId: Int!, 
+  $patientId: Int!, 
+  $appointmentDate: DateTime!
+) {
+  createAppointment(
+    doctorId: $doctorId, 
+    patientId: $patientId, 
+    appointmentDate: $appointmentDate
+  ) {
+    id
+    appointmentDate
+   	doctorId
+    patientId
+  }
+}
+
+{
+  "doctorId": 1,
+  "patientId": 1,
+  "appointmentDate": "2025-02-08T14:30:00.000Z"
+}
+==============================================================
+query { 
+appointment (id:2){
+    id
+    appointmentDate
+    doctor {
+      id
+      specialization 
+			user {
+				name
+			}
+    }
+    patient {
+      id
+      user {
+				name
+			}
+    }
+  }
+}
+==========================================

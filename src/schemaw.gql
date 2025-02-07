@@ -195,3 +195,52 @@ appointment (id:2){
   }
 }
 ==========================================
+mutation CreateMedicalRecord($input: MedicalRecordInput!) {
+  createMedicalRecord(input: $input) {
+    id
+    diagnosis
+    treatment
+    visitDate
+    patient {
+      id
+      user {
+        name
+      }
+    }
+  }
+}
+
+{
+"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1amVldCtkb2N0b3JAZ21haWwuY29tIiwidXNlcklkIjo0LCJyb2xlIjoiRE9DVE9SIiwiaWF0IjoxNzM4OTI2NzE0LCJleHAiOjE3MzkwMTMxMTR9.Dt7z4lbtvYB3YLsEKyDd1m0IsKGvwwKq7SnTlKkyNss"
+}
+
+===============================================
+query{ medicalRecords
+  {
+    id
+    diagnosis
+    treatment
+    visitDate
+    patient {
+      id
+      user {
+        name
+      }
+    }
+  }
+}
+========================================
+query{ medicalRecord (id: 1)
+  {
+    id
+    diagnosis
+    treatment
+    visitDate
+    patient {
+      id
+      user {
+        name
+      }
+    }
+  }
+}
